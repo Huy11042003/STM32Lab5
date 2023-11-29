@@ -2,6 +2,6 @@
 ../Core/Src/scheduler.c:25:6:SCH_Update	16	static
 ../Core/Src/scheduler.c:39:10:SCH_Add_Task	32	static
 ../Core/Src/scheduler.c:55:6:SCH_Dispatch_Task	16	static
-../Core/Src/scheduler.c:72:10:SCH_Delete_Task	16	static
-../Core/Src/scheduler.c:87:6:update_time	4	static
-../Core/Src/scheduler.c:91:6:timestamp	48	static
+../Core/Src/scheduler.c:70:10:SCH_Delete_Task	16	static
+../Core/Src/scheduler.c:85:6:update_time	4	static
+../Core/Src/scheduler.c:89:6:timestamp	48	static

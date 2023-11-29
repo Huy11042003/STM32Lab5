@@ -1,0 +1,3 @@
+../Core/Src/auto.c:10:6:led_fsm	14
+../Core/Src/auto.c:99:6:seg_fsm	5
+../Core/Src/auto.c:123:6:auto_run	1
