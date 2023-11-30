@@ -1,5 +1,5 @@
-../Core/Src/auto.c:11:8:RED_GREEN	3
-../Core/Src/auto.c:39:8:RED_YELLOW	3
-../Core/Src/auto.c:68:8:GREEN_RED	3
-../Core/Src/auto.c:96:8:YELLOW_RED	3
-../Core/Src/auto.c:127:6:seg_fsm	3
+../Core/Src/auto.c:9:8:RED_GREEN	3
+../Core/Src/auto.c:31:8:RED_YELLOW	3
+../Core/Src/auto.c:54:8:GREEN_RED	3
+../Core/Src/auto.c:76:8:YELLOW_RED	3
+../Core/Src/auto.c:99:6:seg_fsm	3

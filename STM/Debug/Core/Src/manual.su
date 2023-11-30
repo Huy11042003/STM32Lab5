@@ -2,6 +2,6 @@
 ../Core/Src/manual.c:24:6:displayIncreaseRed	8	static
 ../Core/Src/manual.c:38:6:displayIncreaseYellow	8	static
 ../Core/Src/manual.c:52:6:displayIncreaseGreen	8	static
-../Core/Src/manual.c:69:8:MODE2	8	static
-../Core/Src/manual.c:101:8:MODE3	8	static
-../Core/Src/manual.c:138:8:MODE4	8	static
+../Core/Src/manual.c:67:6:MODE2	8	static
+../Core/Src/manual.c:95:6:MODE3	8	static
+../Core/Src/manual.c:122:6:MODE4	8	static

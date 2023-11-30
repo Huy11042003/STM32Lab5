@@ -29,9 +29,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  12 .comment      00000043  00000000  00000000  000200d1  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0000d78e  00000000  00000000  00020114  2**0
+ 13 .debug_info   0000d788  00000000  00000000  00020114  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 000026ec  00000000  00000000  0002d8a2  2**0
+ 14 .debug_abbrev 000026ed  00000000  00000000  0002d89c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_aranges 00000e78  00000000  00000000  0002ff90  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -39,9 +39,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  0001898e  00000000  00000000  00031939  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0001186a  00000000  00000000  0004a2c7  2**0
+ 18 .debug_line   00011867  00000000  00000000  0004a2c7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    00088ec3  00000000  00000000  0005bb31  2**0
+ 19 .debug_str    00088ec3  00000000  00000000  0005bb2e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  20 .debug_frame  00003f2c  00000000  00000000  000e49f4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -79,11 +79,11 @@ Disassembly of section .text:
  8000148:	08004b30 	.word	0x08004b30
 
 0800014c <RED_GREEN>:
+ *  Created on: Oct 22, 2023
+ *      Author: ad
  */
 #include "auto.h"
 
-//void led_fsm(){
-//	switch(autostate){
 		void RED_GREEN(){
  800014c:	b580      	push	{r7, lr}
  800014e:	af00      	add	r7, sp, #0
@@ -99,7 +99,6 @@ Disassembly of section .text:
  8000162:	481d      	ldr	r0, [pc, #116]	; (80001d8 <RED_GREEN+0x8c>)
  8000164:	f002 f9c9 	bl	80024fa <HAL_GPIO_WritePin>
 										  |EN4_Pin|EN5_Pin, GPIO_PIN_SET);
-//				MODE = MODE2;
 				HAL_GPIO_WritePin(GPIOA, RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
  8000168:	2201      	movs	r2, #1
  800016a:	f44f 717c 	mov.w	r1, #1008	; 0x3f0
@@ -124,7 +123,6 @@ Disassembly of section .text:
  8000190:	f001 fb62 	bl	8001858 <SCH_Add_Task>
 				return;
  8000194:	e01f      	b.n	80001d6 <RED_GREEN+0x8a>
-//				break;
 			}
 			displayFirstLedCouple(RED);
  8000196:	2001      	movs	r0, #1
@@ -132,7 +130,6 @@ Disassembly of section .text:
 			displaySecondLedCouple(GREEN);
  800019c:	2002      	movs	r0, #2
  800019e:	f000 fa8b 	bl	80006b8 <displaySecondLedCouple>
-//			if(timer_flag[0] == 1){
 				countdownFirstCoupleLed--;
  80001a2:	4b10      	ldr	r3, [pc, #64]	; (80001e4 <RED_GREEN+0x98>)
  80001a4:	681b      	ldr	r3, [r3, #0]
@@ -155,7 +152,6 @@ Disassembly of section .text:
  80001c0:	681b      	ldr	r3, [r3, #0]
  80001c2:	4a09      	ldr	r2, [pc, #36]	; (80001e8 <RED_GREEN+0x9c>)
  80001c4:	6013      	str	r3, [r2, #0]
-//					autostate = RED_YELLOW;
 					SCH_Delete_Task(1);
  80001c6:	2001      	movs	r0, #1
  80001c8:	f001 fc0a 	bl	80019e0 <SCH_Delete_Task>
@@ -165,7 +161,6 @@ Disassembly of section .text:
  80001d0:	4807      	ldr	r0, [pc, #28]	; (80001f0 <RED_GREEN+0xa4>)
  80001d2:	f001 fb41 	bl	8001858 <SCH_Add_Task>
 				}
-//				setTimer(0, 100);
 			}
  80001d6:	bd80      	pop	{r7, pc}
  80001d8:	40010800 	.word	0x40010800
@@ -177,7 +172,6 @@ Disassembly of section .text:
  80001f0:	080001f5 	.word	0x080001f5
 
 080001f4 <RED_YELLOW>:
-//			break;
 		void RED_YELLOW(){
  80001f4:	b580      	push	{r7, lr}
  80001f6:	af00      	add	r7, sp, #0
@@ -193,7 +187,6 @@ Disassembly of section .text:
  800020a:	481f      	ldr	r0, [pc, #124]	; (8000288 <RED_YELLOW+0x94>)
  800020c:	f002 f975 	bl	80024fa <HAL_GPIO_WritePin>
 										  |EN4_Pin|EN5_Pin, GPIO_PIN_SET);
-//				MODE = MODE2;
 				HAL_GPIO_WritePin(GPIOA, RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
  8000210:	2201      	movs	r2, #1
  8000212:	f44f 717c 	mov.w	r1, #1008	; 0x3f0
@@ -218,7 +211,6 @@ Disassembly of section .text:
  8000238:	f001 fb0e 	bl	8001858 <SCH_Add_Task>
 				return;
  800023c:	e023      	b.n	8000286 <RED_YELLOW+0x92>
-//				break;
 			}
 			displayFirstLedCouple(RED);
  800023e:	2001      	movs	r0, #1
@@ -226,7 +218,6 @@ Disassembly of section .text:
 			displaySecondLedCouple(YELLOW);
  8000244:	2003      	movs	r0, #3
  8000246:	f000 fa37 	bl	80006b8 <displaySecondLedCouple>
-//			if(timer_flag[0] == 1){
 				countdownFirstCoupleLed--;
  800024a:	4b12      	ldr	r3, [pc, #72]	; (8000294 <RED_YELLOW+0xa0>)
  800024c:	681b      	ldr	r3, [r3, #0]
@@ -254,7 +245,6 @@ Disassembly of section .text:
  8000270:	681b      	ldr	r3, [r3, #0]
  8000272:	4a08      	ldr	r2, [pc, #32]	; (8000294 <RED_YELLOW+0xa0>)
  8000274:	6013      	str	r3, [r2, #0]
-//					autostate = GREEN_RED;
 					SCH_Delete_Task(1);
  8000276:	2001      	movs	r0, #1
  8000278:	f001 fbb2 	bl	80019e0 <SCH_Delete_Task>
@@ -264,7 +254,6 @@ Disassembly of section .text:
  8000280:	4808      	ldr	r0, [pc, #32]	; (80002a4 <RED_YELLOW+0xb0>)
  8000282:	f001 fae9 	bl	8001858 <SCH_Add_Task>
 				}
-//				setTimer(0, 100);
 			}
  8000286:	bd80      	pop	{r7, pc}
  8000288:	40010800 	.word	0x40010800
@@ -277,7 +266,6 @@ Disassembly of section .text:
  80002a4:	080002a9 	.word	0x080002a9
 
 080002a8 <GREEN_RED>:
-//			break;
 		void GREEN_RED(){
  80002a8:	b580      	push	{r7, lr}
  80002aa:	af00      	add	r7, sp, #0
@@ -293,7 +281,6 @@ Disassembly of section .text:
  80002be:	481d      	ldr	r0, [pc, #116]	; (8000334 <GREEN_RED+0x8c>)
  80002c0:	f002 f91b 	bl	80024fa <HAL_GPIO_WritePin>
 										  |EN4_Pin|EN5_Pin, GPIO_PIN_SET);
-//				MODE = MODE2;
 				HAL_GPIO_WritePin(GPIOA, RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
  80002c4:	2201      	movs	r2, #1
  80002c6:	f44f 717c 	mov.w	r1, #1008	; 0x3f0
@@ -318,7 +305,6 @@ Disassembly of section .text:
  80002ec:	f001 fab4 	bl	8001858 <SCH_Add_Task>
 				return;
  80002f0:	e01f      	b.n	8000332 <GREEN_RED+0x8a>
-//				break;
 			}
 			displayFirstLedCouple(GREEN);
  80002f2:	2002      	movs	r0, #2
@@ -326,7 +312,6 @@ Disassembly of section .text:
 			displaySecondLedCouple(RED);
  80002f8:	2001      	movs	r0, #1
  80002fa:	f000 f9dd 	bl	80006b8 <displaySecondLedCouple>
-//			if(timer_flag[0] == 1){
 				countdownFirstCoupleLed--;
  80002fe:	4b10      	ldr	r3, [pc, #64]	; (8000340 <GREEN_RED+0x98>)
  8000300:	681b      	ldr	r3, [r3, #0]
@@ -349,7 +334,6 @@ Disassembly of section .text:
  800031c:	681b      	ldr	r3, [r3, #0]
  800031e:	4a08      	ldr	r2, [pc, #32]	; (8000340 <GREEN_RED+0x98>)
  8000320:	6013      	str	r3, [r2, #0]
-//					autostate = YELLOW_RED;
 					SCH_Delete_Task(1);
  8000322:	2001      	movs	r0, #1
  8000324:	f001 fb5c 	bl	80019e0 <SCH_Delete_Task>
@@ -359,7 +343,6 @@ Disassembly of section .text:
  800032c:	4807      	ldr	r0, [pc, #28]	; (800034c <GREEN_RED+0xa4>)
  800032e:	f001 fa93 	bl	8001858 <SCH_Add_Task>
 				}
-//				setTimer(0, 100);
 			}
  8000332:	bd80      	pop	{r7, pc}
  8000334:	40010800 	.word	0x40010800
@@ -371,7 +354,6 @@ Disassembly of section .text:
  800034c:	08000351 	.word	0x08000351
 
 08000350 <YELLOW_RED>:
-//			break;
 		void YELLOW_RED(){
  8000350:	b580      	push	{r7, lr}
  8000352:	af00      	add	r7, sp, #0
@@ -387,7 +369,6 @@ Disassembly of section .text:
  8000366:	481f      	ldr	r0, [pc, #124]	; (80003e4 <YELLOW_RED+0x94>)
  8000368:	f002 f8c7 	bl	80024fa <HAL_GPIO_WritePin>
 										  |EN4_Pin|EN5_Pin, GPIO_PIN_SET);
-//				MODE = MODE2;
 				HAL_GPIO_WritePin(GPIOA, RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
  800036c:	2201      	movs	r2, #1
  800036e:	f44f 717c 	mov.w	r1, #1008	; 0x3f0
@@ -412,7 +393,6 @@ Disassembly of section .text:
  8000394:	f001 fa60 	bl	8001858 <SCH_Add_Task>
 				return;
  8000398:	e023      	b.n	80003e2 <YELLOW_RED+0x92>
-//				break;
 			}
 			displayFirstLedCouple(YELLOW);
  800039a:	2003      	movs	r0, #3
@@ -420,7 +400,6 @@ Disassembly of section .text:
 			displaySecondLedCouple(RED);
  80003a0:	2001      	movs	r0, #1
  80003a2:	f000 f989 	bl	80006b8 <displaySecondLedCouple>
-//			if(timer_flag[0] == 1){
 				countdownFirstCoupleLed--;
  80003a6:	4b12      	ldr	r3, [pc, #72]	; (80003f0 <YELLOW_RED+0xa0>)
  80003a8:	681b      	ldr	r3, [r3, #0]
@@ -448,7 +427,6 @@ Disassembly of section .text:
  80003cc:	681b      	ldr	r3, [r3, #0]
  80003ce:	4a08      	ldr	r2, [pc, #32]	; (80003f0 <YELLOW_RED+0xa0>)
  80003d0:	6013      	str	r3, [r2, #0]
-//					autostate = RED_GREEN;
 					SCH_Delete_Task(1);
  80003d2:	2001      	movs	r0, #1
  80003d4:	f001 fb04 	bl	80019e0 <SCH_Delete_Task>
@@ -458,7 +436,6 @@ Disassembly of section .text:
  80003dc:	4808      	ldr	r0, [pc, #32]	; (8000400 <YELLOW_RED+0xb0>)
  80003de:	f001 fa3b 	bl	8001858 <SCH_Add_Task>
 				}
-//				setTimer(0, 100);
 			}
  80003e2:	bd80      	pop	{r7, pc}
  80003e4:	40010800 	.word	0x40010800
@@ -471,9 +448,6 @@ Disassembly of section .text:
  8000400:	0800014d 	.word	0x0800014d
 
 08000404 <seg_fsm>:
-//			break;
-//	}
-//}
 void seg_fsm(){
  8000404:	b580      	push	{r7, lr}
  8000406:	af00      	add	r7, sp, #0
@@ -2863,39 +2837,37 @@ void displayIncreaseGreen(){
 
 08001440 <MODE2>:
 int isDispatch = 0;
-//void manual_run(){
-//	switch(MODE){
-		void MODE2(){
+void MODE2(){
  8001440:	b580      	push	{r7, lr}
  8001442:	af00      	add	r7, sp, #0
-			HAL_GPIO_TogglePin( RED1_GPIO_Port , RED1_Pin) ;
+	HAL_GPIO_TogglePin( RED1_GPIO_Port , RED1_Pin) ;
  8001444:	2110      	movs	r1, #16
  8001446:	482d      	ldr	r0, [pc, #180]	; (80014fc <MODE2+0xbc>)
  8001448:	f001 f86f 	bl	800252a <HAL_GPIO_TogglePin>
-			HAL_GPIO_TogglePin( RED2_GPIO_Port , RED2_Pin) ;
+	HAL_GPIO_TogglePin( RED2_GPIO_Port , RED2_Pin) ;
  800144c:	2180      	movs	r1, #128	; 0x80
  800144e:	482b      	ldr	r0, [pc, #172]	; (80014fc <MODE2+0xbc>)
  8001450:	f001 f86b 	bl	800252a <HAL_GPIO_TogglePin>
-			if (isButtonPressed(1)==1){
+	if (isButtonPressed(1)==1){
  8001454:	2001      	movs	r0, #1
  8001456:	f7fe ffff 	bl	8000458 <isButtonPressed>
  800145a:	4603      	mov	r3, r0
  800145c:	2b01      	cmp	r3, #1
  800145e:	d110      	bne.n	8001482 <MODE2+0x42>
-				redDelay +=1;
+		redDelay +=1;
  8001460:	4b27      	ldr	r3, [pc, #156]	; (8001500 <MODE2+0xc0>)
  8001462:	681b      	ldr	r3, [r3, #0]
  8001464:	3301      	adds	r3, #1
  8001466:	4a26      	ldr	r2, [pc, #152]	; (8001500 <MODE2+0xc0>)
  8001468:	6013      	str	r3, [r2, #0]
-				greenDelay +=1;
+		greenDelay +=1;
  800146a:	4b26      	ldr	r3, [pc, #152]	; (8001504 <MODE2+0xc4>)
  800146c:	681b      	ldr	r3, [r3, #0]
  800146e:	3301      	adds	r3, #1
  8001470:	4a24      	ldr	r2, [pc, #144]	; (8001504 <MODE2+0xc4>)
  8001472:	6013      	str	r3, [r2, #0]
 
-				if(redDelay >= 99) redDelay = 1;
+		if(redDelay >= 99) redDelay = 1;
  8001474:	4b22      	ldr	r3, [pc, #136]	; (8001500 <MODE2+0xc0>)
  8001476:	681b      	ldr	r3, [r3, #0]
  8001478:	2b62      	cmp	r3, #98	; 0x62
@@ -2903,73 +2875,69 @@ int isDispatch = 0;
  800147c:	4b20      	ldr	r3, [pc, #128]	; (8001500 <MODE2+0xc0>)
  800147e:	2201      	movs	r2, #1
  8001480:	601a      	str	r2, [r3, #0]
-			}
-			if (isButtonPressed(2)==1){
+	}
+	if (isButtonPressed(2)==1){
  8001482:	2002      	movs	r0, #2
  8001484:	f7fe ffe8 	bl	8000458 <isButtonPressed>
  8001488:	4603      	mov	r3, r0
  800148a:	2b01      	cmp	r3, #1
  800148c:	d117      	bne.n	80014be <MODE2+0x7e>
-				HAL_GPIO_WritePin(GPIOA, EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
+		HAL_GPIO_WritePin(GPIOA, EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
  800148e:	2201      	movs	r2, #1
  8001490:	f44f 417c 	mov.w	r1, #64512	; 0xfc00
  8001494:	4819      	ldr	r0, [pc, #100]	; (80014fc <MODE2+0xbc>)
  8001496:	f001 f830 	bl	80024fa <HAL_GPIO_WritePin>
-												  |EN4_Pin|EN5_Pin, GPIO_PIN_SET);
-//				MODE = MODE1;
-				setValues();
+										  |EN4_Pin|EN5_Pin, GPIO_PIN_SET);
+		setValues();
  800149a:	f7ff fdcf 	bl	800103c <setValues>
-				SCH_Delete_Task(0);
+		SCH_Delete_Task(0);
  800149e:	2000      	movs	r0, #0
  80014a0:	f000 fa9e 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Delete_Task(1);
+		SCH_Delete_Task(1);
  80014a4:	2001      	movs	r0, #1
  80014a6:	f000 fa9b 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Add_Task(seg_fsm, 1, 50);
+		SCH_Add_Task(seg_fsm, 1, 50);
  80014aa:	2232      	movs	r2, #50	; 0x32
  80014ac:	2101      	movs	r1, #1
  80014ae:	4816      	ldr	r0, [pc, #88]	; (8001508 <MODE2+0xc8>)
  80014b0:	f000 f9d2 	bl	8001858 <SCH_Add_Task>
-				SCH_Add_Task(RED_GREEN, 1, 100);
+		SCH_Add_Task(RED_GREEN, 1, 100);
  80014b4:	2264      	movs	r2, #100	; 0x64
  80014b6:	2101      	movs	r1, #1
  80014b8:	4814      	ldr	r0, [pc, #80]	; (800150c <MODE2+0xcc>)
  80014ba:	f000 f9cd 	bl	8001858 <SCH_Add_Task>
 
-			}
-			if (isButtonPressed(0) == 1){
+	}
+	if (isButtonPressed(0) == 1){
  80014be:	2000      	movs	r0, #0
  80014c0:	f7fe ffca 	bl	8000458 <isButtonPressed>
  80014c4:	4603      	mov	r3, r0
  80014c6:	2b01      	cmp	r3, #1
  80014c8:	d115      	bne.n	80014f6 <MODE2+0xb6>
-//				MODE = MODE3;
-				HAL_GPIO_WritePin(GPIOA, RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
+		HAL_GPIO_WritePin(GPIOA, RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
  80014ca:	2201      	movs	r2, #1
  80014cc:	f44f 717c 	mov.w	r1, #1008	; 0x3f0
  80014d0:	480a      	ldr	r0, [pc, #40]	; (80014fc <MODE2+0xbc>)
  80014d2:	f001 f812 	bl	80024fa <HAL_GPIO_WritePin>
-										                          |YELLOW2_Pin|GREEN2_Pin, GPIO_PIN_SET);
-				SCH_Delete_Task(0);
+														  |YELLOW2_Pin|GREEN2_Pin, GPIO_PIN_SET);
+		SCH_Delete_Task(0);
  80014d6:	2000      	movs	r0, #0
  80014d8:	f000 fa82 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Delete_Task(1);
+		SCH_Delete_Task(1);
  80014dc:	2001      	movs	r0, #1
  80014de:	f000 fa7f 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Add_Task(MODE3, 1, 50);
+		SCH_Add_Task(MODE3, 1, 50);
  80014e2:	2232      	movs	r2, #50	; 0x32
  80014e4:	2101      	movs	r1, #1
  80014e6:	480a      	ldr	r0, [pc, #40]	; (8001510 <MODE2+0xd0>)
  80014e8:	f000 f9b6 	bl	8001858 <SCH_Add_Task>
-				SCH_Add_Task(displayIncreaseYellow, 1, 50);
+		SCH_Add_Task(displayIncreaseYellow, 1, 50);
  80014ec:	2232      	movs	r2, #50	; 0x32
  80014ee:	2101      	movs	r1, #1
  80014f0:	4808      	ldr	r0, [pc, #32]	; (8001514 <MODE2+0xd4>)
  80014f2:	f000 f9b1 	bl	8001858 <SCH_Add_Task>
-			}
-//
-//			break;
-		}
+	}
+}
  80014f6:	bf00      	nop
  80014f8:	bd80      	pop	{r7, pc}
  80014fa:	bf00      	nop
@@ -2982,42 +2950,37 @@ int isDispatch = 0;
  8001514:	080013b9 	.word	0x080013b9
 
 08001518 <MODE3>:
-		void MODE3(){
+void MODE3(){
  8001518:	b580      	push	{r7, lr}
  800151a:	af00      	add	r7, sp, #0
-//				toggleLeds(YELLOW);
-//				displayIncrease(yellowDelay);
-////				setTimer(3, 25);
-////			}
-
-			HAL_GPIO_TogglePin( YELLOW1_GPIO_Port , YELLOW1_Pin) ;
+	HAL_GPIO_TogglePin( YELLOW1_GPIO_Port , YELLOW1_Pin) ;
  800151c:	2120      	movs	r1, #32
  800151e:	482d      	ldr	r0, [pc, #180]	; (80015d4 <MODE3+0xbc>)
  8001520:	f001 f803 	bl	800252a <HAL_GPIO_TogglePin>
-			HAL_GPIO_TogglePin( YELLOW2_GPIO_Port , YELLOW2_Pin) ;
+	HAL_GPIO_TogglePin( YELLOW2_GPIO_Port , YELLOW2_Pin) ;
  8001524:	f44f 7180 	mov.w	r1, #256	; 0x100
  8001528:	482a      	ldr	r0, [pc, #168]	; (80015d4 <MODE3+0xbc>)
  800152a:	f000 fffe 	bl	800252a <HAL_GPIO_TogglePin>
-			if (isButtonPressed(1)==1){
+	if (isButtonPressed(1)==1){
  800152e:	2001      	movs	r0, #1
  8001530:	f7fe ff92 	bl	8000458 <isButtonPressed>
  8001534:	4603      	mov	r3, r0
  8001536:	2b01      	cmp	r3, #1
  8001538:	d110      	bne.n	800155c <MODE3+0x44>
-				yellowDelay +=1;
+		yellowDelay +=1;
  800153a:	4b27      	ldr	r3, [pc, #156]	; (80015d8 <MODE3+0xc0>)
  800153c:	681b      	ldr	r3, [r3, #0]
  800153e:	3301      	adds	r3, #1
  8001540:	4a25      	ldr	r2, [pc, #148]	; (80015d8 <MODE3+0xc0>)
  8001542:	6013      	str	r3, [r2, #0]
-				redDelay+=1;
+		redDelay+=1;
  8001544:	4b25      	ldr	r3, [pc, #148]	; (80015dc <MODE3+0xc4>)
  8001546:	681b      	ldr	r3, [r3, #0]
  8001548:	3301      	adds	r3, #1
  800154a:	4a24      	ldr	r2, [pc, #144]	; (80015dc <MODE3+0xc4>)
  800154c:	6013      	str	r3, [r2, #0]
 
-				if(yellowDelay >= 99) yellowDelay = 1;
+		if(yellowDelay >= 99) yellowDelay = 1;
  800154e:	4b22      	ldr	r3, [pc, #136]	; (80015d8 <MODE3+0xc0>)
  8001550:	681b      	ldr	r3, [r3, #0]
  8001552:	2b62      	cmp	r3, #98	; 0x62
@@ -3025,72 +2988,68 @@ int isDispatch = 0;
  8001556:	4b20      	ldr	r3, [pc, #128]	; (80015d8 <MODE3+0xc0>)
  8001558:	2201      	movs	r2, #1
  800155a:	601a      	str	r2, [r3, #0]
-			}
-			if (isButtonPressed(2)==1){
+	}
+	if (isButtonPressed(2)==1){
  800155c:	2002      	movs	r0, #2
  800155e:	f7fe ff7b 	bl	8000458 <isButtonPressed>
  8001562:	4603      	mov	r3, r0
  8001564:	2b01      	cmp	r3, #1
  8001566:	d117      	bne.n	8001598 <MODE3+0x80>
-				HAL_GPIO_WritePin(GPIOA, EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
+		HAL_GPIO_WritePin(GPIOA, EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
  8001568:	2201      	movs	r2, #1
  800156a:	f44f 417c 	mov.w	r1, #64512	; 0xfc00
  800156e:	4819      	ldr	r0, [pc, #100]	; (80015d4 <MODE3+0xbc>)
  8001570:	f000 ffc3 	bl	80024fa <HAL_GPIO_WritePin>
-												  |EN4_Pin|EN5_Pin, GPIO_PIN_SET);
-//				MODE = MODE1;
-				setValues();
+										  |EN4_Pin|EN5_Pin, GPIO_PIN_SET);
+		setValues();
  8001574:	f7ff fd62 	bl	800103c <setValues>
-				SCH_Delete_Task(0);
+		SCH_Delete_Task(0);
  8001578:	2000      	movs	r0, #0
  800157a:	f000 fa31 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Delete_Task(1);
+		SCH_Delete_Task(1);
  800157e:	2001      	movs	r0, #1
  8001580:	f000 fa2e 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Add_Task(seg_fsm, 1, 50);
+		SCH_Add_Task(seg_fsm, 1, 50);
  8001584:	2232      	movs	r2, #50	; 0x32
  8001586:	2101      	movs	r1, #1
  8001588:	4815      	ldr	r0, [pc, #84]	; (80015e0 <MODE3+0xc8>)
  800158a:	f000 f965 	bl	8001858 <SCH_Add_Task>
-				SCH_Add_Task(RED_GREEN, 1, 100);
+		SCH_Add_Task(RED_GREEN, 1, 100);
  800158e:	2264      	movs	r2, #100	; 0x64
  8001590:	2101      	movs	r1, #1
  8001592:	4814      	ldr	r0, [pc, #80]	; (80015e4 <MODE3+0xcc>)
  8001594:	f000 f960 	bl	8001858 <SCH_Add_Task>
-			}
-			if (isButtonPressed(0) == 1){
+	}
+	if (isButtonPressed(0) == 1){
  8001598:	2000      	movs	r0, #0
  800159a:	f7fe ff5d 	bl	8000458 <isButtonPressed>
  800159e:	4603      	mov	r3, r0
  80015a0:	2b01      	cmp	r3, #1
  80015a2:	d115      	bne.n	80015d0 <MODE3+0xb8>
-//				MODE = MODE4;
-//				setTimer(3, 25);
-				HAL_GPIO_WritePin(GPIOA, RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
+		HAL_GPIO_WritePin(GPIOA, RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
  80015a4:	2201      	movs	r2, #1
  80015a6:	f44f 717c 	mov.w	r1, #1008	; 0x3f0
  80015aa:	480a      	ldr	r0, [pc, #40]	; (80015d4 <MODE3+0xbc>)
  80015ac:	f000 ffa5 	bl	80024fa <HAL_GPIO_WritePin>
-										                          |YELLOW2_Pin|GREEN2_Pin, GPIO_PIN_SET);
-				SCH_Delete_Task(0);
+														  |YELLOW2_Pin|GREEN2_Pin, GPIO_PIN_SET);
+		SCH_Delete_Task(0);
  80015b0:	2000      	movs	r0, #0
  80015b2:	f000 fa15 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Delete_Task(1);
+		SCH_Delete_Task(1);
  80015b6:	2001      	movs	r0, #1
  80015b8:	f000 fa12 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Add_Task(MODE4, 1, 50);
+		SCH_Add_Task(MODE4, 1, 50);
  80015bc:	2232      	movs	r2, #50	; 0x32
  80015be:	2101      	movs	r1, #1
  80015c0:	4809      	ldr	r0, [pc, #36]	; (80015e8 <MODE3+0xd0>)
  80015c2:	f000 f949 	bl	8001858 <SCH_Add_Task>
-				SCH_Add_Task(displayIncreaseGreen, 1, 50);
+		SCH_Add_Task(displayIncreaseGreen, 1, 50);
  80015c6:	2232      	movs	r2, #50	; 0x32
  80015c8:	2101      	movs	r1, #1
  80015ca:	4808      	ldr	r0, [pc, #32]	; (80015ec <MODE3+0xd4>)
  80015cc:	f000 f944 	bl	8001858 <SCH_Add_Task>
-			}
-//			break;
-		}
+	}
+}
  80015d0:	bf00      	nop
  80015d2:	bd80      	pop	{r7, pc}
  80015d4:	40010800 	.word	0x40010800
@@ -3102,42 +3061,38 @@ int isDispatch = 0;
  80015ec:	080013fd 	.word	0x080013fd
 
 080015f0 <MODE4>:
-		void MODE4(){
+void MODE4(){
  80015f0:	b580      	push	{r7, lr}
  80015f2:	af00      	add	r7, sp, #0
-//				toggleLeds(GREEN);
-//				displayIncrease(greenDelay);
-////				setTimer(3, 25);
-////			}
 
-			HAL_GPIO_TogglePin( GREEN1_GPIO_Port , GREEN1_Pin) ;
+	HAL_GPIO_TogglePin( GREEN1_GPIO_Port , GREEN1_Pin) ;
  80015f4:	2140      	movs	r1, #64	; 0x40
  80015f6:	482d      	ldr	r0, [pc, #180]	; (80016ac <MODE4+0xbc>)
  80015f8:	f000 ff97 	bl	800252a <HAL_GPIO_TogglePin>
-			HAL_GPIO_TogglePin( GREEN2_GPIO_Port , GREEN2_Pin) ;
+	HAL_GPIO_TogglePin( GREEN2_GPIO_Port , GREEN2_Pin) ;
  80015fc:	f44f 7100 	mov.w	r1, #512	; 0x200
  8001600:	482a      	ldr	r0, [pc, #168]	; (80016ac <MODE4+0xbc>)
  8001602:	f000 ff92 	bl	800252a <HAL_GPIO_TogglePin>
-			if (isButtonPressed(1)==1){
+	if (isButtonPressed(1)==1){
  8001606:	2001      	movs	r0, #1
  8001608:	f7fe ff26 	bl	8000458 <isButtonPressed>
  800160c:	4603      	mov	r3, r0
  800160e:	2b01      	cmp	r3, #1
  8001610:	d110      	bne.n	8001634 <MODE4+0x44>
-				redDelay +=1;
+		redDelay +=1;
  8001612:	4b27      	ldr	r3, [pc, #156]	; (80016b0 <MODE4+0xc0>)
  8001614:	681b      	ldr	r3, [r3, #0]
  8001616:	3301      	adds	r3, #1
  8001618:	4a25      	ldr	r2, [pc, #148]	; (80016b0 <MODE4+0xc0>)
  800161a:	6013      	str	r3, [r2, #0]
-				greenDelay +=1;
+		greenDelay +=1;
  800161c:	4b25      	ldr	r3, [pc, #148]	; (80016b4 <MODE4+0xc4>)
  800161e:	681b      	ldr	r3, [r3, #0]
  8001620:	3301      	adds	r3, #1
  8001622:	4a24      	ldr	r2, [pc, #144]	; (80016b4 <MODE4+0xc4>)
  8001624:	6013      	str	r3, [r2, #0]
 
-				if(greenDelay >= 99) greenDelay = 1;
+		if(greenDelay >= 99) greenDelay = 1;
  8001626:	4b23      	ldr	r3, [pc, #140]	; (80016b4 <MODE4+0xc4>)
  8001628:	681b      	ldr	r3, [r3, #0]
  800162a:	2b62      	cmp	r3, #98	; 0x62
@@ -3145,73 +3100,68 @@ int isDispatch = 0;
  800162e:	4b21      	ldr	r3, [pc, #132]	; (80016b4 <MODE4+0xc4>)
  8001630:	2201      	movs	r2, #1
  8001632:	601a      	str	r2, [r3, #0]
-			}
-			if (isButtonPressed(2)==1){
+	}
+	if (isButtonPressed(2)==1){
  8001634:	2002      	movs	r0, #2
  8001636:	f7fe ff0f 	bl	8000458 <isButtonPressed>
  800163a:	4603      	mov	r3, r0
  800163c:	2b01      	cmp	r3, #1
  800163e:	d117      	bne.n	8001670 <MODE4+0x80>
-				HAL_GPIO_WritePin(GPIOA, EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
+		HAL_GPIO_WritePin(GPIOA, EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
  8001640:	2201      	movs	r2, #1
  8001642:	f44f 417c 	mov.w	r1, #64512	; 0xfc00
  8001646:	4819      	ldr	r0, [pc, #100]	; (80016ac <MODE4+0xbc>)
  8001648:	f000 ff57 	bl	80024fa <HAL_GPIO_WritePin>
-												  |EN4_Pin|EN5_Pin, GPIO_PIN_SET);
-//				MODE = MODE1;
-				setValues();
+										  |EN4_Pin|EN5_Pin, GPIO_PIN_SET);
+		setValues();
  800164c:	f7ff fcf6 	bl	800103c <setValues>
-				SCH_Delete_Task(0);
+		SCH_Delete_Task(0);
  8001650:	2000      	movs	r0, #0
  8001652:	f000 f9c5 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Delete_Task(1);
+		SCH_Delete_Task(1);
  8001656:	2001      	movs	r0, #1
  8001658:	f000 f9c2 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Add_Task(seg_fsm, 1, 50);
+		SCH_Add_Task(seg_fsm, 1, 50);
  800165c:	2232      	movs	r2, #50	; 0x32
  800165e:	2101      	movs	r1, #1
  8001660:	4815      	ldr	r0, [pc, #84]	; (80016b8 <MODE4+0xc8>)
  8001662:	f000 f8f9 	bl	8001858 <SCH_Add_Task>
-				SCH_Add_Task(RED_GREEN, 1, 100);
+		SCH_Add_Task(RED_GREEN, 1, 100);
  8001666:	2264      	movs	r2, #100	; 0x64
  8001668:	2101      	movs	r1, #1
  800166a:	4814      	ldr	r0, [pc, #80]	; (80016bc <MODE4+0xcc>)
  800166c:	f000 f8f4 	bl	8001858 <SCH_Add_Task>
-			}
-			if (isButtonPressed(0) == 1){
+	}
+	if (isButtonPressed(0) == 1){
  8001670:	2000      	movs	r0, #0
  8001672:	f7fe fef1 	bl	8000458 <isButtonPressed>
  8001676:	4603      	mov	r3, r0
  8001678:	2b01      	cmp	r3, #1
  800167a:	d115      	bne.n	80016a8 <MODE4+0xb8>
-//				MODE = MODE1;
-				HAL_GPIO_WritePin(GPIOA, RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
+		HAL_GPIO_WritePin(GPIOA, RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
  800167c:	2201      	movs	r2, #1
  800167e:	f44f 717c 	mov.w	r1, #1008	; 0x3f0
  8001682:	480a      	ldr	r0, [pc, #40]	; (80016ac <MODE4+0xbc>)
  8001684:	f000 ff39 	bl	80024fa <HAL_GPIO_WritePin>
-										                          |YELLOW2_Pin|GREEN2_Pin, GPIO_PIN_SET);
-				SCH_Delete_Task(0);
+														  |YELLOW2_Pin|GREEN2_Pin, GPIO_PIN_SET);
+		SCH_Delete_Task(0);
  8001688:	2000      	movs	r0, #0
  800168a:	f000 f9a9 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Delete_Task(1);
+		SCH_Delete_Task(1);
  800168e:	2001      	movs	r0, #1
  8001690:	f000 f9a6 	bl	80019e0 <SCH_Delete_Task>
-				SCH_Add_Task(seg_fsm, 1, 50);
+		SCH_Add_Task(seg_fsm, 1, 50);
  8001694:	2232      	movs	r2, #50	; 0x32
  8001696:	2101      	movs	r1, #1
  8001698:	4807      	ldr	r0, [pc, #28]	; (80016b8 <MODE4+0xc8>)
  800169a:	f000 f8dd 	bl	8001858 <SCH_Add_Task>
-				SCH_Add_Task(RED_GREEN, 1, 100);
+		SCH_Add_Task(RED_GREEN, 1, 100);
  800169e:	2264      	movs	r2, #100	; 0x64
  80016a0:	2101      	movs	r1, #1
  80016a2:	4806      	ldr	r0, [pc, #24]	; (80016bc <MODE4+0xcc>)
  80016a4:	f000 f8d8 	bl	8001858 <SCH_Add_Task>
-			}
-//			break;
-//		default:
-//			break;
 	}
+}
  80016a8:	bf00      	nop
  80016aa:	bd80      	pop	{r7, pc}
  80016ac:	40010800 	.word	0x40010800
