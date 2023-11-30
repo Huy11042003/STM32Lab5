@@ -1,2 +1,7 @@
 ../Core/Src/manual.c:10:6:displayIncrease	3
-../Core/Src/manual.c:25:6:manual_run	20
+../Core/Src/manual.c:24:6:displayIncreaseRed	3
+../Core/Src/manual.c:38:6:displayIncreaseYellow	3
+../Core/Src/manual.c:52:6:displayIncreaseGreen	3
+../Core/Src/manual.c:69:8:MODE2	5
+../Core/Src/manual.c:101:8:MODE3	5
+../Core/Src/manual.c:138:8:MODE4	5

@@ -17,7 +17,9 @@ void displayFirstLedCouple(enum LedState state_1);
 void displaySecondLedCouple(enum LedState state_2);
 
 void toggleLeds(enum LedState state);
-
+void toggleLedsRed();
+void toggleLedsYellow();
+void toggleLedsGreen();
 void displaySEG7_1(int num);
 
 void displaySEG7_2(int num);

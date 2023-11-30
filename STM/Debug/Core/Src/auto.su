@@ -1,3 +1,5 @@
-../Core/Src/auto.c:10:6:led_fsm	8	static
-../Core/Src/auto.c:99:6:seg_fsm	8	static
-../Core/Src/auto.c:123:6:auto_run	4	static
+../Core/Src/auto.c:11:8:RED_GREEN	8	static
+../Core/Src/auto.c:39:8:RED_YELLOW	8	static
+../Core/Src/auto.c:68:8:GREEN_RED	8	static
+../Core/Src/auto.c:96:8:YELLOW_RED	8	static
+../Core/Src/auto.c:127:6:seg_fsm	8	static

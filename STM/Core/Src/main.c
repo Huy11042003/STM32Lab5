@@ -108,8 +108,9 @@ int main(void)
 //  SCH_Add_Task(led3, 320, 150);
 //  SCH_Add_Task(led4, 430, 200);
 //  SCH_Add_Task(led5, 540, 250);
-	SCH_Add_Task(led_fsm, 100, 100);
-	SCH_Add_Task(seg_fsm, 110, 50);
+
+	SCH_Add_Task(seg_fsm, 100, 50);
+	SCH_Add_Task(RED_GREEN, 110, 100);
   setValues();
   displayFirstLedCouple(LED_INIT);
   while (1)
@@ -117,9 +118,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  auto_run();
-	  manual_run();
+//	  auto_run();
+//	  manual_run();
 	  SCH_Dispatch_Task();
+		HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
   }
   /* USER CODE END 3 */
 }
@@ -262,11 +264,17 @@ static void MX_GPIO_Init(void)
                           |E1_Pin|F1_Pin|G1_Pin|A2_Pin
                           |B2_Pin|C2_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : BUTTON1_Pin BUTTON2_Pin BUTTON3_Pin */
-  GPIO_InitStruct.Pin = BUTTON1_Pin|BUTTON2_Pin|BUTTON3_Pin;
+  /*Configure GPIO pins : BUTTON2_Pin BUTTON3_Pin */
+  GPIO_InitStruct.Pin = BUTTON2_Pin|BUTTON3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : BUTTON1_Pin */
+  GPIO_InitStruct.Pin = BUTTON1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(BUTTON1_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : RED1_Pin YELLOW1_Pin GREEN1_Pin RED2_Pin
                            YELLOW2_Pin GREEN2_Pin EN0_Pin EN1_Pin
@@ -298,10 +306,7 @@ static void MX_GPIO_Init(void)
 void HAL_TIM_PeriodElapsedCallback( TIM_HandleTypeDef * htim ) {
 	update_time();
 	SCH_Update();
-	timerRun(0);
-	timerRun(1);
-	timerRun(2);
-	timerRun(3);
+	getKeyInput();
 }
 /* USER CODE END 4 */
 

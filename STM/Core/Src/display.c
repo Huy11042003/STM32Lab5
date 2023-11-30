@@ -81,6 +81,18 @@ void toggleLeds(enum LedState state){
 		 break;
 	}
 }
+void toggleLedsRed(){
+	HAL_GPIO_TogglePin( RED1_GPIO_Port , RED1_Pin) ;
+	HAL_GPIO_TogglePin( RED2_GPIO_Port , RED2_Pin) ;
+}
+void toggleLedsYellow(){
+	HAL_GPIO_TogglePin( YELLOW1_GPIO_Port , YELLOW1_Pin) ;
+	HAL_GPIO_TogglePin( YELLOW2_GPIO_Port , YELLOW2_Pin) ;
+}
+void toggleLedsGreen(){
+	HAL_GPIO_TogglePin( GREEN1_GPIO_Port , GREEN1_Pin) ;
+	HAL_GPIO_TogglePin( GREEN2_GPIO_Port , GREEN2_Pin) ;
+}
 
 
 void displaySEG7_1(int num){

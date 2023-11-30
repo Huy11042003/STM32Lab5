@@ -10,6 +10,7 @@
 
 int buttonsArr[BUTTONS_NUMBER] = {BUTTON1_Pin, BUTTON2_Pin, BUTTON3_Pin};
 
+
 int KeyReg0[BUTTONS_NUMBER] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
 int KeyReg1[BUTTONS_NUMBER] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
 int KeyReg2[BUTTONS_NUMBER] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
@@ -36,7 +37,12 @@ void getKeyInput(){
 for(int i=0; i<BUTTONS_NUMBER; i++){
   KeyReg2[i] = KeyReg1[i];
   KeyReg1[i] = KeyReg0[i];
-  KeyReg0[i] = HAL_GPIO_ReadPin(GPIOA, buttonsArr[i]);
+  if(i == 0)
+	  KeyReg0[i] = HAL_GPIO_ReadPin(BUTTON1_GPIO_Port, buttonsArr[i]);
+  else if(i ==1)
+	  KeyReg0[i] = HAL_GPIO_ReadPin(BUTTON2_GPIO_Port, buttonsArr[i]);
+  else
+	  KeyReg0[i] = HAL_GPIO_ReadPin(BUTTON3_GPIO_Port, buttonsArr[i]);
   if ((KeyReg1[i] == KeyReg0[i]) && (KeyReg1[i] == KeyReg2[i])){
     if (KeyReg2[i] != KeyReg3[i]){
       KeyReg3[i] = KeyReg2[i];

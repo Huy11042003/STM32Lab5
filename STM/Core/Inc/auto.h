@@ -12,7 +12,14 @@
 #include "global.h"
 #include "software_timer.h"
 #include "button.h"
+#include "scheduler.h"
+#include "manual.h"
 
+
+void RED_GREEN();
+void RED_YELLOW();
+void GREEN_RED();
+void YELLOW_RED();
 void led_fsm();
 void seg_fsm();
 void auto_run();
